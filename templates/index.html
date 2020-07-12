@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Maps Project</title>
 
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 
@@ -27,7 +27,8 @@
             var mymap = L.map('maps').setView([-2.548926, 118.0148634], 5);
 
             L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
-                maxZoom: 18,
+                maxZoom: 5,
+                minZoom: 5,
                 attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
                     '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
                     'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -35,6 +36,62 @@
                 tileSize: 512,
                 zoomOffset: -1
             }).addTo(mymap);
+            
+            // control that shows state info on hover
+            var info = L.control();
+
+            info.onAdd = function (mymap) {
+                this._div = L.DomUtil.create('div', 'info');
+                this.update();
+                return this._div;
+            };
+
+            info.update = function (props) {
+
+                this._div.innerHTML = '<h4>Covid-19 Cases</h4>' +  
+                ( props ?  
+                props.id_1 == 11 ? '<b>' + "{{aceh.0}}" + '</b><br />' + "Positif : {{aceh.1}}" + '<br />' + "Sembuh : {{aceh.2}}" + '<br />' + "Meninggal : {{aceh.3}}" + '<br />' :
+                props.id_1 == 12 ? '<b>' + "{{sumut.0}}" + '</b><br />' + "Positif : {{sumut.1}}" + '<br />' + "Sembuh : {{sumut.2}}" + '<br />' + "Meninggal : {{sumut.3}}" + '<br />' :
+                props.id_1 == 13 ? '<b>' + "{{aceh.0}}" + '</b><br />' + "Positif : {{aceh.1}}" + '<br />' + "Sembuh : {{aceh.2}}" + '<br />' + "Meninggal : {{aceh.3}}" + '<br />' :
+                props.id_1 == 14 ? '<b>' + "{{aceh.0}}" + '</b><br />' + "Positif : {{aceh.1}}" + '<br />' + "Sembuh : {{aceh.2}}" + '<br />' + "Meninggal : {{aceh.3}}" + '<br />':
+                props.id_1 == 15 ? '<b>' + "{{aceh.0}}" + '</b><br />' + "Positif : {{aceh.1}}" + '<br />' + "Sembuh : {{aceh.2}}" + '<br />' + "Meninggal : {{aceh.3}}" + '<br />':
+                props.id_1 == 16 ? '<b>' + "{{aceh.0}}" + '</b><br />' + "Positif : {{aceh.1}}" + '<br />' + "Sembuh : {{aceh.2}}" + '<br />' + "Meninggal : {{aceh.3}}" + '<br />':
+                props.id_1 == 17 ? '<b>' + "{{aceh.0}}" + '</b><br />' + "Positif : {{aceh.1}}" + '<br />' + "Sembuh : {{aceh.2}}" + '<br />' + "Meninggal : {{aceh.3}}" + '<br />':
+                props.id_1 == 18 ? '<b>' + "{{aceh.0}}" + '</b><br />' + "Positif : {{aceh.1}}" + '<br />' + "Sembuh : {{aceh.2}}" + '<br />' + "Meninggal : {{aceh.3}}" + '<br />':
+                props.id_1 == 19 ? '<b>' + "{{aceh.0}}" + '</b><br />' + "Positif : {{aceh.1}}" + '<br />' + "Sembuh : {{aceh.2}}" + '<br />' + "Meninggal : {{aceh.3}}" + '<br />':
+                props.id_1 == 10 ? '<b>' + "{{aceh.0}}" + '</b><br />' + "Positif : {{aceh.1}}" + '<br />' + "Sembuh : {{aceh.2}}" + '<br />' + "Meninggal : {{aceh.3}}" + '<br />':
+                props.id_1 == 21 ? '<b>' + "{{aceh.0}}" + '</b><br />' + "Positif : {{aceh.1}}" + '<br />' + "Sembuh : {{aceh.2}}" + '<br />' + "Meninggal : {{aceh.3}}" + '<br />':
+                props.id_1 == 31 ? '<b>' + "{{aceh.0}}" + '</b><br />' + "Positif : {{aceh.1}}" + '<br />' + "Sembuh : {{aceh.2}}" + '<br />' + "Meninggal : {{aceh.3}}" + '<br />':
+                props.id_1 == 32 ? '<b>' + "{{aceh.0}}" + '</b><br />' + "Positif : {{aceh.1}}" + '<br />' + "Sembuh : {{aceh.2}}" + '<br />' + "Meninggal : {{aceh.3}}" + '<br />':
+                props.id_1 == 33 ? '<b>' + "{{aceh.0}}" + '</b><br />' + "Positif : {{aceh.1}}" + '<br />' + "Sembuh : {{aceh.2}}" + '<br />' + "Meninggal : {{aceh.3}}" + '<br />':
+                props.id_1 == 34 ? '<b>' + "{{aceh.0}}" + '</b><br />' + "Positif : {{aceh.1}}" + '<br />' + "Sembuh : {{aceh.2}}" + '<br />' + "Meninggal : {{aceh.3}}" + '<br />':
+                props.id_1 == 35 ? '<b>' + "{{aceh.0}}" + '</b><br />' + "Positif : {{aceh.1}}" + '<br />' + "Sembuh : {{aceh.2}}" + '<br />' + "Meninggal : {{aceh.3}}" + '<br />':
+                props.id_1 == 36 ? '<b>' + "{{aceh.0}}" + '</b><br />' + "Positif : {{aceh.1}}" + '<br />' + "Sembuh : {{aceh.2}}" + '<br />' + "Meninggal : {{aceh.3}}" + '<br />':
+                props.id_1 == 51 ? '<b>' + "{{aceh.0}}" + '</b><br />' + "Positif : {{aceh.1}}" + '<br />' + "Sembuh : {{aceh.2}}" + '<br />' + "Meninggal : {{aceh.3}}" + '<br />':
+                props.id_1 == 52 ? '<b>' + "{{aceh.0}}" + '</b><br />' + "Positif : {{aceh.1}}" + '<br />' + "Sembuh : {{aceh.2}}" + '<br />' + "Meninggal : {{aceh.3}}" + '<br />':
+                props.id_1 == 53 ? '<b>' + "{{aceh.0}}" + '</b><br />' + "Positif : {{aceh.1}}" + '<br />' + "Sembuh : {{aceh.2}}" + '<br />' + "Meninggal : {{aceh.3}}" + '<br />':
+                props.id_1 == 61 ? '<b>' + "{{aceh.0}}" + '</b><br />' + "Positif : {{aceh.1}}" + '<br />' + "Sembuh : {{aceh.2}}" + '<br />' + "Meninggal : {{aceh.3}}" + '<br />':
+                props.id_1 == 62 ? '<b>' + "{{aceh.0}}" + '</b><br />' + "Positif : {{aceh.1}}" + '<br />' + "Sembuh : {{aceh.2}}" + '<br />' + "Meninggal : {{aceh.3}}" + '<br />':
+                props.id_1 == 63 ? '<b>' + "{{aceh.0}}" + '</b><br />' + "Positif : {{aceh.1}}" + '<br />' + "Sembuh : {{aceh.2}}" + '<br />' + "Meninggal : {{aceh.3}}" + '<br />':
+                props.id_1 == 64 ? '<b>' + "{{aceh.0}}" + '</b><br />' + "Positif : {{aceh.1}}" + '<br />' + "Sembuh : {{aceh.2}}" + '<br />' + "Meninggal : {{aceh.3}}" + '<br />':
+                props.id_1 == 65 ? '<b>' + "{{aceh.0}}" + '</b><br />' + "Positif : {{aceh.1}}" + '<br />' + "Sembuh : {{aceh.2}}" + '<br />' + "Meninggal : {{aceh.3}}" + '<br />':
+                props.id_1 == 71 ? '<b>' + "{{aceh.0}}" + '</b><br />' + "Positif : {{aceh.1}}" + '<br />' + "Sembuh : {{aceh.2}}" + '<br />' + "Meninggal : {{aceh.3}}" + '<br />':
+                props.id_1 == 72 ? '<b>' + "{{aceh.0}}" + '</b><br />' + "Positif : {{aceh.1}}" + '<br />' + "Sembuh : {{aceh.2}}" + '<br />' + "Meninggal : {{aceh.3}}" + '<br />':
+                props.id_1 == 73 ? '<b>' + "{{aceh.0}}" + '</b><br />' + "Positif : {{aceh.1}}" + '<br />' + "Sembuh : {{aceh.2}}" + '<br />' + "Meninggal : {{aceh.3}}" + '<br />':
+                props.id_1 == 74 ? '<b>' + "{{aceh.0}}" + '</b><br />' + "Positif : {{aceh.1}}" + '<br />' + "Sembuh : {{aceh.2}}" + '<br />' + "Meninggal : {{aceh.3}}" + '<br />':
+                props.id_1 == 76 ? '<b>' + "{{aceh.0}}" + '</b><br />' + "Positif : {{aceh.1}}" + '<br />' + "Sembuh : {{aceh.2}}" + '<br />' + "Meninggal : {{aceh.3}}" + '<br />':
+                props.id_1 == 81 ? '<b>' + "{{aceh.0}}" + '</b><br />' + "Positif : {{aceh.1}}" + '<br />' + "Sembuh : {{aceh.2}}" + '<br />' + "Meninggal : {{aceh.3}}" + '<br />':
+                props.id_1 == 82 ? '<b>' + "{{aceh.0}}" + '</b><br />' + "Positif : {{aceh.1}}" + '<br />' + "Sembuh : {{aceh.2}}" + '<br />' + "Meninggal : {{aceh.3}}" + '<br />':
+                props.id_1 == 91 ? '<b>' + "{{aceh.0}}" + '</b><br />' + "Positif : {{aceh.1}}" + '<br />' + "Sembuh : {{aceh.2}}" + '<br />' + "Meninggal : {{aceh.3}}" + '<br />':
+                props.id_1 == 94 ? '<b>' + "{{aceh.0}}" + '</b><br />' + "Positif : {{aceh.1}}" + '<br />' + "Sembuh : {{aceh.2}}" + '<br />' + "Meninggal : {{aceh.3}}" + '<br />'
+                : 'Hover over a state'
+                : 'Hover over a state');
+
+            };
+
+
+            info.addTo(mymap);
+
 
             function style(feature) {
                 return {
@@ -84,6 +141,7 @@
             var geojson = L.geoJson(IndonesiaData, {style: style, onEachFeature: onEachFeature}).addTo(mymap);
         </script>
     </div>
+
 </body>
 
 </html>
