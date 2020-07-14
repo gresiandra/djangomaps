@@ -1,4 +1,7 @@
 #maps {
+    margin: 10px 15px 10px 15px;
+    max-height: 100%;
+    min-height: 50%;
     height: 480px;
 }
 
@@ -11,7 +14,13 @@
     border-radius: 5px;
 }
 
-.info h4 { 
+.info h5 { 
     margin: 0 0 5px; 
     color: #777; 
 }
+
+.info b { 
+    margin: 0 0 3px; 
+    color: #777; 
+}
+

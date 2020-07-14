@@ -9,6 +9,7 @@
     <title>Maps Project</title>
 
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
     integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
@@ -18,13 +19,31 @@
     integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
     crossorigin=""></script>
 
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" style="color: aliceblue;" >Peta Covid-19 Indonesia</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Maps <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
 </head>
 
 <body>
+    
     <div id="maps">
         <script type="text/javascript" src="{% static 'js/indonesia.js' %}"></script>
         <script>
-            var mymap = L.map('maps').setView([-2.548926, 118.0148634], 5);
+            var mymap = L.map('maps', {zoomControl: false}).setView([-2.548926, 118.0148634], 5);
 
             L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
                 maxZoom: 5,
@@ -48,7 +67,7 @@
 
             info.update = function (props) {
 
-                this._div.innerHTML = '<h4>Kasus Covid-19</h4>' +  
+                this._div.innerHTML = '<h5>Kasus Covid-19</h5>' +  
                 ( props ?  
                 props.id_1 == 11 ? '<b>' + "{{aceh.0}}" + '</b><br />' + "Positif : {{aceh.1}}" + '<br />' + "Sembuh : {{aceh.2}}" + '<br />' + "Meninggal : {{aceh.3}}" + '<br />' :
                 props.id_1 == 12 ? '<b>' + "{{sumut.0}}" + '</b><br />' + "Positif : {{sumut.1}}" + '<br />' + "Sembuh : {{sumut.2}}" + '<br />' + "Meninggal : {{sumut.3}}" + '<br />' :
@@ -123,7 +142,7 @@
 
             function resetHighlight(e) {
                 geojson.resetStyle(e.target);
-                info.update();
+                // info.update();
             }
 
             function zoomToFeature(e) {
@@ -134,13 +153,54 @@
                 layer.on({
                     mouseover: highlightFeature,
                     mouseout: resetHighlight,
-                    click: zoomToFeature
                 });
+                
             }
         
             var geojson = L.geoJson(IndonesiaData, {style: style, onEachFeature: onEachFeature}).addTo(mymap);
         </script>
     </div>
+
+    <div class="container">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                  <th scope="col">No.</th>
+                  <th scope="col">Provinsi</th>
+                  <th scope="col">Kasus Positif</th>
+                  <th scope="col">Sembuh</th>
+                  <th scope="col">Meninggal</th>
+                </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+                <td>@mdo</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+                <td>@fat</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Larry</td>
+                <td>the Bird</td>
+                <td>@twitter</td>
+                <td>@twitter</td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 </body>
 
