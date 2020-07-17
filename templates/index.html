@@ -111,7 +111,6 @@
 
             info.addTo(mymap);
 
-
             function style(feature) {
                 return {
                     // fillColor: getColor(feature.properties.density),
@@ -161,6 +160,10 @@
         </script>
     </div>
 
+    <div class="container">
+
+    </div>
+
     <div class="table-responsive">
         <table class="table">
             <thead class="thead-dark">
@@ -177,7 +180,7 @@
               {% for provinsi, positif, sembuh, meninggal in list%}
                 <tr>
                   <th scope="row">{{forloop.counter}}</th>
-                  <td>{{provinsi}}</td>
+                  <td style="text-align: left;">{{provinsi}}</td>
                   <td>{{positif}}</td>
                   <td>{{sembuh}}</td>
                   <td>{{meninggal}}</td>
