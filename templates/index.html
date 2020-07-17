@@ -161,7 +161,7 @@
         </script>
     </div>
 
-    <div class="container">
+    <div class="table-responsive">
         <table class="table">
             <thead class="thead-dark">
                 <tr>
@@ -174,10 +174,13 @@
             </thead>
             <tbody>
           
-              {% for prov in provinsi%}
+              {% for provinsi, positif, sembuh, meninggal in list%}
                 <tr>
                   <th scope="row">{{forloop.counter}}</th>
-                  <td>{{prov}}</td>
+                  <td>{{provinsi}}</td>
+                  <td>{{positif}}</td>
+                  <td>{{sembuh}}</td>
+                  <td>{{meninggal}}</td>
                 </tr>
               {% endfor %}
 

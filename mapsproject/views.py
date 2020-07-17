@@ -30,11 +30,15 @@ def index(request):
 
         a=a+1
 
+    zippedList = zip(provinsi, positif, sembuh, meninggal)
+    print(zippedList)
+
     context = {
         'provinsi':provinsi,
         'positif':positif,
         'sembuh':sembuh,
         'meninggal':meninggal,
+        'list':zippedList
 
     }
     return render(request, 'index.html', context)
