@@ -29,3 +29,9 @@ table {
     max-width: 100%;
     text-align: center;
 }
+
+.card {
+    text-align: center;
+    margin: 5px;
+    color:#212529;
+}

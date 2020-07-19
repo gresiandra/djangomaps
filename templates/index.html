@@ -48,9 +48,9 @@
             L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
                 maxZoom: 5,
                 minZoom: 5,
-                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
-                    '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-                    'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+                // attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+                //     '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+                //     'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
                 id: 'mapbox/light-v9',
                 tileSize: 512,
                 zoomOffset: -1
@@ -111,6 +111,17 @@
 
             info.addTo(mymap);
 
+            function getColor(d) {
+              return d > 1000 ? '#800026' :
+                    d > 500  ? '#BD0026' :
+                    d > 200  ? '#E31A1C' :
+                    d > 100  ? '#FC4E2A' :
+                    d > 50   ? '#FD8D3C' :
+                    d > 20   ? '#FEB24C' :
+                    d > 10   ? '#FED976' :
+                                '#FFEDA0';
+}
+
             function style(feature) {
                 return {
                     // fillColor: getColor(feature.properties.density),
@@ -160,12 +171,71 @@
         </script>
     </div>
 
-    <div class="container">
+    <div class="card-deck m-1">
+      <div class="card border-dark">
+        <div class="card-header bg-dark"><h4 style="color: antiquewhite; text-align: center;">INDONESIA</h4></div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm">
+              <h5 class="text-dark">Total Kasus</h5>
+            </div>
+            <div class="col-sm">
+              <h5 class="text-dark">{{positif_indonesia}}</h5>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm">
+              <h5 class="text-dark">Kasus Sembuh</h5>
+            </div>
+            <div class="col-sm">
+              <h5 class="text-success">{{sembuh_indonesia}}</h5>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm">
+              <h5 class="text-dark">Kasus Meninggal</h5>
+            </div>
+            <div class="col-sm">
+              <h5 class="text-danger">{{meninggal_indonesia}}</h5>
+            </div>
+          </div>
+        </div>
 
+      </div>
+      <div class="card border-dark">
+        <div class="card-header bg-dark"><h4 style="color: antiquewhite; text-align: center;">GLOBAL</h4></div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm">
+              <h5 class="text-dark">Total Kasus</h5>
+            </div>
+            <div class="col-sm">
+              <h5 class="text-dark">{{positif_dunia}}</h5>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm">
+              <h5 class="text-dark">Kasus Sembuh</h5>
+            </div>
+            <div class="col-sm">
+              <h5 class="text-success">{{sembuh_dunia}}</h5>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm">
+              <h5 class="text-dark">Kasus Meninggal</h5>
+            </div>
+            <div class="col-sm">
+              <h5 class="text-danger">{{meninggal_dunia}}</h5>
+            </div>
+          </div>
+        </div>          
+        </div>
+      </div>
     </div>
 
     <div class="table-responsive">
-        <table class="table">
+        <table class="table rounded-5">
             <thead class="thead-dark">
                 <tr>
                   <th scope="col">No.</th>
