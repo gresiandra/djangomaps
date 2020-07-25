@@ -2,6 +2,7 @@
 <html lang="en">
 
 {% load static %}
+{% load humanize %}
 
 <head>
     <meta charset="UTF-8">
@@ -19,18 +20,18 @@
     integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
     crossorigin=""></script>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" style="color: aliceblue;" >Peta Covid-19 Indonesia</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+    <nav class="navbar navbar-expand-lg">
+        <a class="navbar-brand navbar-dark" style="color: white;">PETA COVID-19 INDONESIA</a>
+        <button  class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon" ></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="#">Maps <span class="sr-only">(current)</span></a>
+              <b><a class="nav-link" href="#">Maps <span class="sr-only">(current)</span></a></b>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
+              <b><a class="nav-link" href="#">About</a></b>
             </li>
           </ul>
         </div>
@@ -48,12 +49,12 @@
             L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
                 maxZoom: 5,
                 minZoom: 5,
-                // attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
-                //     '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-                //     'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> '+
+                    'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
                 id: 'mapbox/light-v9',
                 tileSize: 512,
-                zoomOffset: -1
+                zoomOffset: -1,
+                
             }).addTo(mymap);
             
             // control that shows state info on hover
@@ -111,25 +112,14 @@
 
             info.addTo(mymap);
 
-            function getColor(d) {
-              return d > 1000 ? '#800026' :
-                    d > 500  ? '#BD0026' :
-                    d > 200  ? '#E31A1C' :
-                    d > 100  ? '#FC4E2A' :
-                    d > 50   ? '#FD8D3C' :
-                    d > 20   ? '#FEB24C' :
-                    d > 10   ? '#FED976' :
-                                '#FFEDA0';
-}
-
             function style(feature) {
                 return {
                     // fillColor: getColor(feature.properties.density),
                     weight: 2,
                     opacity: 1,
-                    color: '#fc9272',
+                    color: '#31a354',
                     dashArray: '3',
-                    fillOpacity: 0.7
+                    fillOpacity: 0.8
                 };
             }
 
@@ -138,7 +128,7 @@
 
                 layer.setStyle({
                     weight: 3,
-                    color: '#de2d26',
+                    color: '#e6550d',
                     dashArray: '',
                     fillOpacity: 0.5
                 });
@@ -171,10 +161,10 @@
         </script>
     </div>
 
-    <div class="card-deck m-1">
-      <div class="card border-dark">
-        <div class="card-header bg-dark"><h4 style="color: antiquewhite; text-align: center;">INDONESIA</h4></div>
-        <div class="card-body">
+    <div class="card-deck m-6 p-3 pt-6">
+      <div class="card">
+        <div class="card-header" style="background-color: white;"><h4 style="color: black; text-align: center;">INDONESIA</h4></div>
+        <div class="card-body bg-light">
           <div class="row">
             <div class="col-sm">
               <h5 class="text-dark">Total Kasus</h5>
@@ -202,9 +192,9 @@
         </div>
 
       </div>
-      <div class="card border-dark">
-        <div class="card-header bg-dark"><h4 style="color: antiquewhite; text-align: center;">GLOBAL</h4></div>
-        <div class="card-body">
+      <div class="card">
+        <div class="card-header" style="background-color: white;"><h4 style="color: black; text-align: center;">GLOBAL</h4></div>
+        <div class="card-body bg-light">
           <div class="row">
             <div class="col-sm">
               <h5 class="text-dark">Total Kasus</h5>
@@ -234,9 +224,9 @@
       </div>
     </div>
 
-    <div class="table-responsive">
+    <div class="table-responsive mt-3 pt-3">
         <table class="table">
-            <thead class="thead-dark">
+            <thead class="thead" style="background-color:white;">
                 <tr>
                   <th scope="col">No.</th>
                   <th scope="col">Provinsi</th>
@@ -250,10 +240,10 @@
               {% for provinsi, positif, sembuh, meninggal in list%}
                 <tr>
                   <th scope="row">{{forloop.counter}}</th>
-                  <td style="text-align: left;">{{provinsi}}</td>
-                  <td>{{positif}}</td>
-                  <td>{{sembuh}}</td>
-                  <td>{{meninggal}}</td>
+                  <td>{{provinsi|intcomma}}</td>
+                  <td>{{positif|intcomma}}</td>
+                  <td>{{sembuh|intcomma}}</td>
+                  <td>{{meninggal|intcomma}}</td>
                 </tr>
               {% endfor %}
 
