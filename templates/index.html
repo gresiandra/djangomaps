@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maps Project</title>
+    <title>Covid Maps</title>
 
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -28,10 +28,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
-              <b><a class="nav-link" href="#">Maps <span class="sr-only">(current)</span></a></b>
-            </li>
-            <li class="nav-item">
-              <b><a class="nav-link" href="#">About</a></b>
+              <b><a class="nav-link" href="https://gresiandraputra.herokuapp.com">Creator Page <span class="sr-only">(current)</span></a></b>
             </li>
           </ul>
         </div>
@@ -41,7 +38,7 @@
 
 <body>
     
-    <div id="maps">
+    <div class="maps-container mb-3" id="maps">
         <script type="text/javascript" src="{% static 'js/indonesia.js' %}"></script>
         <script>
             var mymap = L.map('maps', {zoomControl: false}).setView([-2.548926, 118.0148634], 5);
