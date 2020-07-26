@@ -25,7 +25,7 @@ SECRET_KEY = '051h$fu%(y_6y0n16(t_=p#s%*3(n!!m7_^=%7zwz232ms!wxr'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['https://covid-maps-id.herokuapp.com']
+ALLOWED_HOSTS = ['https://covid-maps-id.herokuapp.com/']
 
 # Application definition
 
