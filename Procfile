@@ -1,1 +1,1 @@
-web: gunicorn covid-indo.wsgi
+web: gunicorn mapsproject.wsgi
