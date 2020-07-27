@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '051h$fu%(y_6y0n16(t_=p#s%*3(n!!m7_^=%7zwz232ms!wxr'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['https://covid-maps-id.herokuapp.com/']
+ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -126,4 +126,5 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 
+# Activate Django-Heroku.
 django_heroku.settings(locals())
