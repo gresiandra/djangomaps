@@ -41,7 +41,7 @@
     <div class="maps-container mb-3" id="maps">
         <script type="text/javascript" src="{% static 'js/indonesia.js' %}"></script>
         <script>
-            var mymap = L.map('maps', {zoomControl: false}).setView([-2.548926, 118.0148634], 5);
+            let mymap = L.map('maps', {zoomControl: false}).setView([-2.548926, 118.0148634], 5);
 
             L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
                 maxZoom: 7,
@@ -55,7 +55,7 @@
             }).addTo(mymap);
             
             // control that shows state info on hover
-            var info = L.control();
+            let info = L.control();
 
             info.onAdd = function (mymap) {
                 this._div = L.DomUtil.create('div', 'info');
@@ -121,7 +121,7 @@
             }
 
             function highlightFeature(e) {
-                var layer = e.target;
+                let layer = e.target;
 
                 layer.setStyle({
                     weight: 3,
@@ -226,7 +226,6 @@
         <table class="table">
             <thead class="thead" style="background-color:white;">
                 <tr>
-                  <th scope="col">No.</th>
                   <th scope="col">Provinsi</th>
                   <th scope="col">Kasus Positif</th>
                   <th scope="col">Sembuh</th>
@@ -237,7 +236,6 @@
           
               {% for provinsi, positif, sembuh, meninggal in list%}
                 <tr>
-                  <th scope="row">{{forloop.counter}}</th>
                   <td>{{provinsi|intcomma}}</td>
                   <td>{{positif|intcomma}}</td>
                   <td>{{sembuh|intcomma}}</td>
